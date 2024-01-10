@@ -1,0 +1,12 @@
+[submodule "catalog"]
+	path = catalog
+	url = ../catalog
+[submodule "wishlist"]
+	path = wishlist
+	url = ../wishlist
+[submodule "frontend"]
+	path = frontend
+	url = ../frontend
+[submodule "inventory"]
+	path = inventory
+	url = ../inventory
