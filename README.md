@@ -4,4 +4,4 @@ Usage
 ```sh
 docker compose up
 ```
-![](https://i1.sndcdn.com/artworks-IU11mVyx0uGKwZOA-tnGSZw-t500x500.jpg)
+![It just works](https://i1.sndcdn.com/artworks-IU11mVyx0uGKwZOA-tnGSZw-t500x500.jpg)
