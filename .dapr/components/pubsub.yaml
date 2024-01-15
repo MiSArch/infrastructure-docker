@@ -3,18 +3,12 @@ kind: Component
 metadata:
   name: pubsub
 spec:
-  type: pubsub.kafka
+  type: pubsub.redis
   version: v1
   metadata:
-  - name: brokers
-    value: dapr-kafka:9092
-  - name: authType
-    value: password
-  - name: saslUsername
-    value: adminuser
-  - name: saslPassword
-    value: admin
-  - name: saslMechanism
-    value: "SHA-512"
-  - name: disableTls
-    value: "true"
+  - name: redisHost
+    value: dapr-redis:6379
+  - name: redisPassword
+    value: redis
+  - name: enableTLS
+    value: "false"
