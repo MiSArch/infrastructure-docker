@@ -14,11 +14,44 @@ services:
     volumes:
       - "./dapr-config.yaml:/config.yaml"
 
+  wishlist:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist
+  wishlist-db:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist-db
+  wishlist-dapr:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist-dapr
+    volumes:
+      - "./dapr-config.yaml:/config.yaml"
+
   placement:
     image: "daprio/dapr"
     command: ["./placement", "-port", "50006"]
     ports:
       - "50006:50006"
+
+  dapr-zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+  dapr-kafka:
+    image: your-dapr-kafka-image:tag
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://dapr-kafka:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_LOG_DIRS=/var/lib/kafka/data
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    volumes:
+      - kafka-data:/var/lib/kafka/data
 
   zipkin-all-in-one:
     image: openzipkin/zipkin:latest
@@ -45,3 +78,4 @@ services:
       - "9090:9090"
 volumes:
   catalog-db-data:
+  wishlist-db-data:

@@ -1,0 +1,20 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+  - name: brokers
+    value: dapr-kafka:9092
+  - name: authType
+    value: password
+  - name: saslUsername
+    value: adminuser
+  - name: saslPassword
+    value: admin
+  - name: saslMechanism
+    value: "SHA-512"
+  - name: disableTls
+    value: "true"
