@@ -12,13 +12,36 @@ services:
       file: catalog/docker-compose-base.yaml
       service: catalog-dapr
     volumes:
-      - "./dapr-config.yaml:/config.yaml"
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
+  wishlist:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist
+  wishlist-db:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist-db
+  wishlist-dapr:
+    extends:
+      file: wishlist/docker-compose-base.yaml
+      service: wishlist-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
 
   placement:
-    image: "daprio/dapr"
+    image: daprio/dapr
     command: ["./placement", "-port", "50006"]
     ports:
       - "50006:50006"
+
+  dapr-redis:
+    image: redis
+    command: redis-server --requirepass redis
+    volumes:
+      - redis-data:/var/lib/redis/data
 
   zipkin-all-in-one:
     image: openzipkin/zipkin:latest
@@ -45,3 +68,5 @@ services:
       - "9090:9090"
 volumes:
   catalog-db-data:
+  wishlist-db-data:
+  redis-data:
