@@ -1,4 +1,18 @@
 services:
+  gateway:
+    extends:
+      file: gateway/docker-compose-base.yaml
+      service: gateway
+    ports:
+      - "8080:8080"
+  gateway-dapr:
+    extends:
+      file: gateway/docker-compose-base.yaml
+      service: gateway-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   catalog:
     extends:
       file: catalog/docker-compose-base.yaml

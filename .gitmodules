@@ -10,3 +10,6 @@
 [submodule "inventory"]
 	path = inventory
 	url = ../inventory
+[submodule "gateway"]
+	path = gateway
+	url = ../gateway
