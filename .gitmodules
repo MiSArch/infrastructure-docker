@@ -16,3 +16,6 @@
 [submodule "gateway"]
 	path = gateway
 	url = ../gateway
+[submodule "notification"]
+	path = notification
+	url = ../notification
