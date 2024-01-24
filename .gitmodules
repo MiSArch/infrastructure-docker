@@ -13,3 +13,6 @@
 [submodule "shoppingcart"]
 	path = shoppingcart
 	url = ../shoppingcart
+[submodule "gateway"]
+	path = gateway
+	url = ../gateway
