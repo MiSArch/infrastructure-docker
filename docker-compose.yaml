@@ -59,6 +59,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  shoppingcart:
+    extends:
+      file: shoppingcart/docker-compose-base.yaml
+      service: shoppingcart
+  shoppingcart-db:
+    extends:
+      file: shoppingcart/docker-compose-base.yaml
+      service: shoppingcart-db
+  shoppingcart-dapr:
+    extends:
+      file: shoppingcart/docker-compose-base.yaml
+      service: shoppingcart-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
