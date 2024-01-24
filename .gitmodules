@@ -19,3 +19,6 @@
 [submodule "notification"]
 	path = notification
 	url = ../notification
+[submodule "user"]
+	path = user
+	url = ../user
