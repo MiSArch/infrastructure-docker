@@ -75,6 +75,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  notification:
+    extends:
+      file: notification/docker-compose-base.yaml
+      service: notification
+  notification-db:
+    extends:
+      file: notification/docker-compose-base.yaml
+      service: notification-db
+  notification-dapr:
+    extends:
+      file: notification/docker-compose-base.yaml
+      service: notification-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
