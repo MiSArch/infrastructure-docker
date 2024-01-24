@@ -22,3 +22,6 @@
 [submodule "user"]
 	path = user
 	url = ../user
+[submodule "keycloak"]
+	path = keycloak
+	url = ../keycloak
