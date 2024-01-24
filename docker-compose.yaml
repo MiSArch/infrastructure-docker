@@ -91,6 +91,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  user:
+    extends:
+      file: user/docker-compose-base.yaml
+      service: user
+  user-db:
+    extends:
+      file: user/docker-compose-base.yaml
+      service: user-db
+  user-dapr:
+    extends:
+      file: user/docker-compose-base.yaml
+      service: user-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
