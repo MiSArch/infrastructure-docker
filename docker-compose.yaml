@@ -115,6 +115,10 @@ services:
     extends:
       file: inventory/docker-compose-base.yaml
       service: inventory-db
+  inventory-mongosetup:
+    extends:
+      file: inventory/docker-compose-base.yaml
+      service: inventory-mongosetup
   inventory-dapr:
     extends:
       file: inventory/docker-compose-base.yaml
