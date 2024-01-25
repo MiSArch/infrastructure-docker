@@ -107,6 +107,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  inventory:
+    extends:
+      file: inventory/docker-compose-base.yaml
+      service: inventory
+  inventory-db:
+    extends:
+      file: inventory/docker-compose-base.yaml
+      service: inventory-db
+  inventory-dapr:
+    extends:
+      file: inventory/docker-compose-base.yaml
+      service: inventory-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -146,3 +162,7 @@ volumes:
   catalog-db-data:
   wishlist-db-data:
   redis-data:
+  shoppingcart-db-data:
+  notification-db-data:
+  user-db-data:
+  inventory-db-data:
