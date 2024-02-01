@@ -107,6 +107,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  keycloak:
+    extends:
+      file: keycloak/docker-compose-base.yaml
+      service: keycloak
+  keycloak-db:
+    extends:
+      file: keycloak/docker-compose-base.yaml
+      service: keycloak-db
+  keycloak-dapr:
+    extends:
+      file: keycloak/docker-compose-base.yaml
+      service: keycloak-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   inventory:
     extends:
       file: inventory/docker-compose-base.yaml
@@ -170,3 +186,4 @@ volumes:
   notification-db-data:
   user-db-data:
   inventory-db-data:
+  keycloak-db-data:
