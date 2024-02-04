@@ -154,6 +154,8 @@ services:
     command: redis-server --requirepass redis
     volumes:
       - redis-data:/var/lib/redis/data
+    ports:
+      - "6379:6379"
 
   zipkin-all-in-one:
     image: openzipkin/zipkin:latest
