@@ -25,3 +25,6 @@
 [submodule "keycloak"]
 	path = keycloak
 	url = ../keycloak
+[submodule "tax"]
+	path = tax
+	url = ../tax

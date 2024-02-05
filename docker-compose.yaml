@@ -142,6 +142,22 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+
+  tax:
+    extends:
+      file: tax/docker-compose-base.yaml
+      service: tax
+  tax-db:
+    extends:
+      file: tax/docker-compose-base.yaml
+      service: tax-db
+  tax-dapr:
+    extends:
+      file: tax/docker-compose-base.yaml
+      service: tax-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
   
   placement:
     image: daprio/dapr
@@ -189,3 +205,4 @@ volumes:
   user-db-data:
   inventory-db-data:
   keycloak-db-data:
+  tax-db-data:
