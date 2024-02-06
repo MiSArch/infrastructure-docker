@@ -28,3 +28,6 @@
 [submodule "tax"]
 	path = tax
 	url = ../tax
+[submodule "review"]
+	path = review
+	url = ../review
