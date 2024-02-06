@@ -160,6 +160,22 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+
+  review:
+    extends:
+      file: review/docker-compose-base.yaml
+      service: review
+  review-db:
+    extends:
+      file: review/docker-compose-base.yaml
+      service: review-db
+  review-dapr:
+    extends:
+      file: review/docker-compose-base.yaml
+      service: review-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
   
   placement:
     image: daprio/dapr
@@ -208,3 +224,4 @@ volumes:
   inventory-db-data:
   keycloak-db-data:
   tax-db-data:
+  review-db-data:
