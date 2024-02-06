@@ -111,6 +111,8 @@ services:
     extends:
       file: keycloak/docker-compose-base.yaml
       service: keycloak
+    ports:
+      - "8081:80"
   keycloak-db:
     extends:
       file: keycloak/docker-compose-base.yaml
