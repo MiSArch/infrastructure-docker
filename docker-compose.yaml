@@ -19,6 +19,8 @@ services:
       service: frontend
     ports:
       - "4000:80"
+    depends_on:
+      - keycloak
   frontend-dapr:
     extends:
       file: frontend/docker-compose-base.yaml
