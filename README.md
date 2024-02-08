@@ -1,7 +1,7 @@
 # MisArch Docker Compose setup
 
 ## Prebuild containers
-Always prebuild containers (current version)
+Uses prebuild containers (always current version)
 ```sh
 docker compose up
 ```
