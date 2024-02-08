@@ -3,7 +3,6 @@ services:
     extends:
       file: gateway/docker-compose-base.yaml
       service: gateway
-    image: ghcr.io/misarch/gateway:main
     ports:
       - "8080:8080"
   gateway-dapr:
@@ -18,7 +17,6 @@ services:
     extends:
       file: frontend/docker-compose-base.yaml
       service: frontend
-    image: ghcr.io/misarch/frontend:main
     ports:
       - "4000:80"
     depends_on:
@@ -35,7 +33,6 @@ services:
     extends:
       file: catalog/docker-compose-base.yaml
       service: catalog
-    image: ghcr.io/misarch/catalog:main
   catalog-db:
     extends:
       file: catalog/docker-compose-base.yaml
@@ -52,7 +49,6 @@ services:
     extends:
       file: wishlist/docker-compose-base.yaml
       service: wishlist
-    image: ghcr.io/misarch/wishlist:main
   wishlist-db:
     extends:
       file: wishlist/docker-compose-base.yaml
@@ -69,7 +65,6 @@ services:
     extends:
       file: shoppingcart/docker-compose-base.yaml
       service: shoppingcart
-    image: ghcr.io/misarch/shoppingcart:main
   shoppingcart-db:
     extends:
       file: shoppingcart/docker-compose-base.yaml
@@ -86,7 +81,6 @@ services:
     extends:
       file: notification/docker-compose-base.yaml
       service: notification
-    image: ghcr.io/misarch/notification:main
   notification-db:
     extends:
       file: notification/docker-compose-base.yaml
@@ -103,7 +97,6 @@ services:
     extends:
       file: user/docker-compose-base.yaml
       service: user
-    image: ghcr.io/misarch/user:main
   user-db:
     extends:
       file: user/docker-compose-base.yaml
@@ -120,7 +113,6 @@ services:
     extends:
       file: keycloak/docker-compose-base.yaml
       service: keycloak
-    image: ghcr.io/misarch/keycloak:main
     ports:
       - "8081:80"
   keycloak-db:
@@ -139,7 +131,6 @@ services:
     extends:
       file: inventory/docker-compose-base.yaml
       service: inventory
-    image: ghcr.io/misarch/inventory:main
   inventory-db:
     extends:
       file: inventory/docker-compose-base.yaml
@@ -160,7 +151,6 @@ services:
     extends:
       file: tax/docker-compose-base.yaml
       service: tax
-    image: ghcr.io/misarch/tax:main
   tax-db:
     extends:
       file: tax/docker-compose-base.yaml
@@ -177,7 +167,6 @@ services:
     extends:
       file: review/docker-compose-base.yaml
       service: review
-    image: ghcr.io/misarch/review:main
   review-db:
     extends:
       file: review/docker-compose-base.yaml
