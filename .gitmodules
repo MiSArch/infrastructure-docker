@@ -31,3 +31,6 @@
 [submodule "review"]
 	path = review
 	url = ../review
+[submodule "address"]
+	path = address
+	url = ../address
