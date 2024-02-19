@@ -190,6 +190,23 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
   
+  address:
+    extends:
+      file: address/docker-compose-base.yaml
+      service: address
+    image: ghcr.io/misarch/address:main
+  address-db:
+    extends:
+      file: address/docker-compose-base.yaml
+      service: address-db
+  address-dapr:
+    extends:
+      file: address/docker-compose-base.yaml
+      service: address-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -238,3 +255,4 @@ volumes:
   keycloak-db-data:
   tax-db-data:
   review-db-data:
+  address-db-data:
