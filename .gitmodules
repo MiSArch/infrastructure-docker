@@ -34,3 +34,6 @@
 [submodule "address"]
 	path = address
 	url = ../address
+[submodule "order"]
+	path = order
+	url = ../order
