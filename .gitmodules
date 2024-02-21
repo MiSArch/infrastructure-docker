@@ -34,3 +34,6 @@
 [submodule "address"]
 	path = address
 	url = ../address
+[submodule "shipment"]
+	path = shipment
+	url = ../shipment
