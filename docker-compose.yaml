@@ -207,6 +207,23 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
   
+  discount:
+    extends:
+      file: discount/docker-compose-base.yaml
+      service: discount
+    image: ghcr.io/misarch/discount:main
+  discount-db:
+    extends:
+      file: discount/docker-compose-base.yaml
+      service: discount-db
+  discount-dapr:
+    extends:
+      file: discount/docker-compose-base.yaml
+      service: discount-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -256,3 +273,4 @@ volumes:
   tax-db-data:
   review-db-data:
   address-db-data:
+  discount-db-data:
