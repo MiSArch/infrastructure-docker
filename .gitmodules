@@ -40,3 +40,6 @@
 [submodule "discount"]
 	path = discount
 	url = ../discount
+[submodule "order"]
+	path = order
+	url = ../order
