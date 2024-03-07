@@ -37,3 +37,6 @@
 [submodule "shipment"]
 	path = shipment
 	url = ../shipment
+[submodule "discount"]
+	path = discount
+	url = ../discount
