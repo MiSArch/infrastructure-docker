@@ -210,6 +210,24 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+  
+  shipment:
+    extends:
+      file: shipment/docker-compose-base.yaml
+      service: shipment
+    environment:
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://localhost/TODO
+  shipment-db:
+    extends:
+      file: shipment/docker-compose-base.yaml
+      service: shipment-db
+  shipment-dapr:
+    extends:
+      file: shipment/docker-compose-base.yaml
+      service: shipment-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
 
   placement:
     image: daprio/dapr
@@ -261,3 +279,4 @@ volumes:
   review-db-data:
   address-db-data:
   discount-db-data:
+  shipment-db-data:
