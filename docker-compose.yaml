@@ -242,6 +242,23 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+  
+  return:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return
+    image: ghcr.io/misarch/return:main
+  return-db:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return-db
+  return-dapr:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
 
   placement:
     image: daprio/dapr
@@ -294,3 +311,4 @@ volumes:
   address-db-data:
   discount-db-data:
   shipment-db-data:
+  return-db-data:

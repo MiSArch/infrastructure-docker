@@ -229,6 +229,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  return:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return
+  return-db:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return-db
+  return-dapr:
+    extends:
+      file: return/docker-compose-base.yaml
+      service: return-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -280,3 +296,4 @@ volumes:
   address-db-data:
   discount-db-data:
   shipment-db-data:
+  return-db-data:
