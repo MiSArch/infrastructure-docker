@@ -46,3 +46,6 @@
 [submodule "return"]
 	path = return
 	url = ../return
+[submodule "payment"]
+	path = payment
+	url = ../payment
