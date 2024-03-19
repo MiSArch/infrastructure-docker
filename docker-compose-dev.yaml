@@ -245,6 +245,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  payment:
+    extends:
+      file: payment/docker-compose-base.yaml
+      service: payment
+  payment-db:
+    extends:
+      file: payment/docker-compose-base.yaml
+      service: payment-db
+  payment-dapr:
+    extends:
+      file: payment/docker-compose-base.yaml
+      service: payment-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -297,3 +313,4 @@ volumes:
   discount-db-data:
   shipment-db-data:
   return-db-data:
+  payment-db-data:
