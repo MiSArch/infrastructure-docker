@@ -277,6 +277,23 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  order:
+    extends:
+      file: order/docker-compose-base.yaml
+      service: order
+    image: ghcr.io/misarch/order:main
+  order-db:
+    extends:
+      file: order/docker-compose-base.yaml
+      service: order-db
+  order-dapr:
+    extends:
+      file: order/docker-compose-base.yaml
+      service: order-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -330,3 +347,4 @@ volumes:
   shipment-db-data:
   return-db-data:
   payment-db-data:
+  order-db-data:
