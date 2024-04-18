@@ -298,7 +298,7 @@ services:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation
-    image: ghcr.io/misarch/payment:main
+    image: ghcr.io/misarch/simulation:main
   simulation-rabbitmq:
     extends:
       file: simulation/docker-compose-base.yaml
