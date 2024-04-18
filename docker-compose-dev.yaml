@@ -277,6 +277,19 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  simulation:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation
+    ports:
+      - "7000:7000"
+  simulation-rabbitmq:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation-rabbitmq
+    ports:
+      - "15672:15672"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]

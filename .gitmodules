@@ -49,3 +49,6 @@
 [submodule "payment"]
 	path = payment
 	url = ../payment
+[submodule "simulation"]
+	path = simulation
+	url = ../simulation
