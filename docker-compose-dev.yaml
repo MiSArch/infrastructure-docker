@@ -277,6 +277,26 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  media:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media
+    ports:
+      - 8080:8080
+  media-minio:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media-minio
+    ports:
+      - 9000:9000
+  media-dapr:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -331,3 +351,4 @@ volumes:
   return-db-data:
   payment-db-data:
   order-db-data:
+  media-minio-data:
