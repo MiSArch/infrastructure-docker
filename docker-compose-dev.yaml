@@ -281,8 +281,6 @@ services:
     extends:
       file: media/docker-compose-base.yaml
       service: media
-    ports:
-      - 8080:8080
   media-minio:
     extends:
       file: media/docker-compose-base.yaml
