@@ -18,6 +18,7 @@ services:
     extends:
       file: frontend/docker-compose-base.yaml
       service: frontend
+    image: ghcr.io/misarch/frontend:main
     ports:
       - "4000:80"
     depends_on:
@@ -302,8 +303,6 @@ services:
     extends:
       file: media/docker-compose-base.yaml
       service: media-minio
-    ports:
-      - 9000:9000
   media-dapr:
     extends:
       file: media/docker-compose-base.yaml
