@@ -419,6 +419,8 @@ services:
     extends:
       file: media/docker-compose-base.yaml
       service: media
+    environment:
+      MINIO_ENDPOINT: http://media-minio:9000
   media-minio:
     extends:
       file: media/docker-compose-base.yaml
