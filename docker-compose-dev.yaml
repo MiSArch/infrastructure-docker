@@ -295,6 +295,22 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  invoice:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice
+  invoice-db:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-db
+  invoice-dapr:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  
   experiment-config:
     extends:
       file: experiment-config/docker-compose-base.yaml
@@ -305,9 +321,6 @@ services:
     extends:
       file: experiment-config/docker-compose-base.yaml
       service: experiment-config-dapr
-    volumes:
-      - "./.dapr/dapr-config.yaml:/config.yaml"
-      - "./.dapr/components:/components"
 
   placement:
     image: daprio/dapr
@@ -364,3 +377,4 @@ volumes:
   payment-db-data:
   order-db-data:
   media-minio-data:
+  invoice-db-data:

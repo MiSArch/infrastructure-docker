@@ -55,3 +55,9 @@
 [submodule "experiment-config"]
 	path = experiment-config
 	url = ../experiment-config
+[submodule "invoice"]
+	path = invoice
+	url = ../invoice
+[submodule "experiment-config-sidecar"]
+	path = experiment-config-sidecar
+	url = ../experiment-config-sidecar
