@@ -294,6 +294,21 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  experiment-config:
+    extends:
+      file: experiment-config/docker-compose-base.yaml
+      service: experiment-config
+    image: ghcr.io/misarch/experiment-config:main
+    ports:
+      - "3000:8080"
+  experiment-config-dapr:
+    extends:
+      file: experiment-config/docker-compose-base.yaml
+      service: experiment-config-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   media:
     extends:
       file: media/docker-compose-base.yaml

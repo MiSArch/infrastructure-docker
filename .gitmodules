@@ -52,3 +52,6 @@
 [submodule "media"]
 	path = media
 	url = ../media
+[submodule "experiment-config"]
+	path = experiment-config
+	url = ../experiment-config

@@ -295,6 +295,20 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  experiment-config:
+    extends:
+      file: experiment-config/docker-compose-base.yaml
+      service: experiment-config
+    ports:
+      - "3000:8080"
+  experiment-config-dapr:
+    extends:
+      file: experiment-config/docker-compose-base.yaml
+      service: experiment-config-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
