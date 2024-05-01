@@ -52,3 +52,6 @@
 [submodule "media"]
 	path = media
 	url = ../media
+[submodule "invoice"]
+	path = invoice
+	url = ../invoice
