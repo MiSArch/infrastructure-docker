@@ -282,7 +282,7 @@ services:
       file: simulation/docker-compose-base.yaml
       service: simulation
     ports:
-      - "7000:7000"
+      - "7000:8080"
   simulation-rabbitmq:
     extends:
       file: simulation/docker-compose-base.yaml

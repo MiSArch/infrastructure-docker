@@ -299,12 +299,12 @@ services:
       file: simulation/docker-compose-base.yaml
       service: simulation
     image: ghcr.io/misarch/simulation:main
+    ports:
+      - "7000:8080"
   simulation-rabbitmq:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation-rabbitmq
-    ports:
-      - "15672:15672"
 
   placement:
     image: daprio/dapr
