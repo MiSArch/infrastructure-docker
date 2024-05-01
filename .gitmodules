@@ -52,6 +52,9 @@
 [submodule "media"]
 	path = media
 	url = ../media
+[submodule "invoice"]
+	path = invoice
+	url = ../invoice
 [submodule "experiment-config-sidecar"]
 	path = experiment-config-sidecar
 	url = ../experiment-config-sidecar

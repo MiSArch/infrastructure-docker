@@ -311,6 +311,23 @@ services:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
 
+  invoice:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice
+    image: ghcr.io/misarch/invoice:main
+  invoice-db:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-db
+  invoice-dapr:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
   placement:
     image: daprio/dapr
     command: ["./placement", "-port", "50006"]
@@ -366,3 +383,4 @@ volumes:
   payment-db-data:
   order-db-data:
   media-minio-data:
+  invoice-db-data:
