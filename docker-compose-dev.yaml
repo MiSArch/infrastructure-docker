@@ -216,7 +216,7 @@ services:
       file: shipment/docker-compose-base.yaml
       service: shipment
     environment:
-      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://localhost/TODO
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:7000
   shipment-db:
     extends:
       file: shipment/docker-compose-base.yaml
@@ -249,6 +249,8 @@ services:
     extends:
       file: payment/docker-compose-base.yaml
       service: payment
+    environment:
+      SIMULATION_URL: http://simulation:7000
   payment-db:
     extends:
       file: payment/docker-compose-base.yaml
