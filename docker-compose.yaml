@@ -299,6 +299,8 @@ services:
       file: media/docker-compose-base.yaml
       service: media
     image: ghcr.io/misarch/media:main
+    environment:
+      MINIO_ENDPOINT: http://media-minio:9000
   media-minio:
     extends:
       file: media/docker-compose-base.yaml
