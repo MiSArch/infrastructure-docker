@@ -10,3 +10,5 @@ spec:
       endpointAddress: otel-collector:4317
       protocol: grpc
       isSecure: false
+  metrics:
+    enabled: true
