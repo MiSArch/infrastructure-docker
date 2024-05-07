@@ -307,6 +307,41 @@ services:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation-rabbitmq
+  media:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media
+    image: ghcr.io/misarch/media:main
+    environment:
+      MINIO_ENDPOINT: http://media-minio:9000
+  media-minio:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media-minio
+  media-dapr:
+    extends:
+      file: media/docker-compose-base.yaml
+      service: media-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+
+  invoice:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice
+    image: ghcr.io/misarch/invoice:main
+  invoice-db:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-db
+  invoice-dapr:
+    extends:
+      file: invoice/docker-compose-base.yaml
+      service: invoice-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
 
   placement:
     image: daprio/dapr
@@ -362,3 +397,5 @@ volumes:
   return-db-data:
   payment-db-data:
   order-db-data:
+  media-minio-data:
+  invoice-db-data:
