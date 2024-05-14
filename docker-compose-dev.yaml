@@ -494,6 +494,14 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+  experiment-config-frontend:
+    extends:
+      file: experiment-config-frontend/docker-compose-base.yaml
+      service: experiment-config-frontend
+    ports:
+      - "4200:80"
+    environment:
+      - EXPERIMENT_CONFIG_ENDPOINT=experiment-config:8080
 
   placement:
     image: daprio/dapr
