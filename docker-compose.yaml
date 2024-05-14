@@ -349,7 +349,7 @@ services:
       service: shipment
     image: ghcr.io/misarch/shipment:main
     environment:
-      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://localhost/TODO
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:7000
   shipment-db:
     extends:
       file: shipment/docker-compose-base.yaml
@@ -402,6 +402,8 @@ services:
       file: payment/docker-compose-base.yaml
       service: payment
     image: ghcr.io/misarch/payment:main
+    environment:
+      SIMULATION_URL: http://simulation:7000 
   payment-db:
     extends:
       file: payment/docker-compose-base.yaml
@@ -449,6 +451,17 @@ services:
       - ASPNETCORE_HTTP_PORTS=$EXPERIMENT_CONFIG_SIDECAR_PORT
     network_mode: "service:order"
 
+  simulation:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation
+    image: ghcr.io/misarch/simulation:main
+    ports:
+      - "7000:8080"
+  simulation-rabbitmq:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation-rabbitmq
   media:
     extends:
       file: media/docker-compose-base.yaml
