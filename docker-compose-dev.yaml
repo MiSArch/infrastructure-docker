@@ -429,6 +429,7 @@ services:
       service: simulation-rabbitmq
     ports:
       - "15672:15672"
+  
   media:
     extends:
       file: media/docker-compose-base.yaml
