@@ -462,6 +462,7 @@ services:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation-rabbitmq
+
   media:
     extends:
       file: media/docker-compose-base.yaml
