@@ -429,6 +429,21 @@ services:
       service: simulation-rabbitmq
     ports:
       - "15672:15672"
+  simulation-dapr:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation-dapr
+    volumes:
+    - "./.dapr/dapr-config.yaml:/config.yaml"
+    - "./.dapr/components:/components"
+  simulation-ecs:
+    extends:
+      file: experiment-config-sidecar/docker-compose-base.yaml
+      service: experiment-config-sidecar
+    environment:
+      - SERVICE_NAME=simulation
+      - ASPNETCORE_HTTP_PORTS=$EXPERIMENT_CONFIG_SIDECAR_PORT
+    network_mode: "service:order"
   media:
     extends:
       file: media/docker-compose-base.yaml

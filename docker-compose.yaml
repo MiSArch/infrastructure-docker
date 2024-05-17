@@ -462,6 +462,22 @@ services:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation-rabbitmq
+  simulation-dapr:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  simulation-ecs:
+    extends:
+      file: experiment-config-sidecar/docker-compose-base.yaml
+      service: experiment-config-sidecar
+    image: ghcr.io/misarch/experiment-config-sidecar:main
+    environment:
+      - SERVICE_NAME=simulation
+      - ASPNETCORE_HTTP_PORTS=$EXPERIMENT_CONFIG_SIDECAR_PORT
+    network_mode: "service:simulation"
   media:
     extends:
       file: media/docker-compose-base.yaml
