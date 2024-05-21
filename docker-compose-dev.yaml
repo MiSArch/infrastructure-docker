@@ -444,6 +444,7 @@ services:
       - SERVICE_NAME=simulation
       - ASPNETCORE_HTTP_PORTS=$EXPERIMENT_CONFIG_SIDECAR_PORT
     network_mode: "service:simulation"
+
   media:
     extends:
       file: media/docker-compose-base.yaml
