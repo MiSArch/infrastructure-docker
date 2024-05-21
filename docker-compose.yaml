@@ -349,7 +349,7 @@ services:
       service: shipment
     image: ghcr.io/misarch/shipment:main
     environment:
-      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:7000
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:8080/shipment/register
   shipment-db:
     extends:
       file: shipment/docker-compose-base.yaml
@@ -403,7 +403,7 @@ services:
       service: payment
     image: ghcr.io/misarch/payment:main
     environment:
-      SIMULATION_URL: http://simulation:7000 
+      PAYMENT_PROVIDER_URL: http://simulation:8080/payment/register 
   payment-db:
     extends:
       file: payment/docker-compose-base.yaml

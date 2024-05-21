@@ -322,7 +322,7 @@ services:
       file: shipment/docker-compose-base.yaml
       service: shipment
     environment:
-      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:7000
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:8080/shipment/register
   shipment-db:
     extends:
       file: shipment/docker-compose-base.yaml
@@ -372,7 +372,7 @@ services:
       file: payment/docker-compose-base.yaml
       service: payment
     environment:
-      SIMULATION_URL: http://simulation:7000
+      PAYMENT_PROVIDER_URL: http://simulation:8080/payment/register
   payment-db:
     extends:
       file: payment/docker-compose-base.yaml
