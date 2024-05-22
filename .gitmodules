@@ -64,3 +64,6 @@
 [submodule "experiment-config-sidecar"]
 	path = experiment-config-sidecar
 	url = ../experiment-config-sidecar
+[submodule "experiment-config-frontend"]
+	path = experiment-config-frontend
+	url = ../experiment-config-frontend

@@ -349,7 +349,7 @@ services:
       service: shipment
     image: ghcr.io/misarch/shipment:main
     environment:
-      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:7000
+      - MISARCH_SHIPMENT_PROVIDER_ENDPOINT=http://simulation:8080/shipment/register
   shipment-db:
     extends:
       file: shipment/docker-compose-base.yaml
@@ -403,7 +403,7 @@ services:
       service: payment
     image: ghcr.io/misarch/payment:main
     environment:
-      SIMULATION_URL: http://simulation:7000 
+      PAYMENT_PROVIDER_URL: http://simulation:8080/payment/register 
   payment-db:
     extends:
       file: payment/docker-compose-base.yaml
@@ -462,6 +462,22 @@ services:
     extends:
       file: simulation/docker-compose-base.yaml
       service: simulation-rabbitmq
+  simulation-dapr:
+    extends:
+      file: simulation/docker-compose-base.yaml
+      service: simulation-dapr
+    volumes:
+      - "./.dapr/dapr-config.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  simulation-ecs:
+    extends:
+      file: experiment-config-sidecar/docker-compose-base.yaml
+      service: experiment-config-sidecar
+    image: ghcr.io/misarch/experiment-config-sidecar:main
+    environment:
+      - SERVICE_NAME=simulation
+      - ASPNETCORE_HTTP_PORTS=$EXPERIMENT_CONFIG_SIDECAR_PORT
+    network_mode: "service:simulation"
 
   media:
     extends:
@@ -531,6 +547,15 @@ services:
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+  experiment-config-frontend:
+    extends:
+      file: experiment-config-frontend/docker-compose-base.yaml
+      service: experiment-config-frontend
+    image: ghcr.io/misarch/experiment-config-frontend:main
+    environment:
+      - EXPERIMENT_CONFIG_ENDPOINT=experiment-config:8080
+    ports:
+      - "4200:80"
 
   placement:
     image: daprio/dapr
