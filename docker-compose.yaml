@@ -457,7 +457,7 @@ services:
       service: simulation
     image: ghcr.io/misarch/simulation:main
     ports:
-      - "7000:8080"
+      - "8090:8080"
   simulation-rabbitmq:
     extends:
       file: simulation/docker-compose-base.yaml
