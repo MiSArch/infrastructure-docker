@@ -594,6 +594,33 @@ services:
       - ./prometheus.yaml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+
+  prometheus-pushgateway:
+    image: prom/pushgateway:latest
+    restart: always
+    ports:
+      - "9091:9091"
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    restart: always
+    volumes:
+      - /:/rootfs:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /var/run/crio/crio.sock:/var/run/crio/crio.sock:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    depends_on:
+      - dapr-redis
 volumes:
   catalog-db-data:
   wishlist-db-data:
@@ -613,3 +640,4 @@ volumes:
   order-db-data:
   media-minio-data:
   invoice-db-data:
+  cadvisor-data:
