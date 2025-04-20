@@ -3,7 +3,6 @@ services:
     extends:
       file: gateway/docker-compose-base.yaml
       service: gateway
-    image: ghcr.io/misarch/gateway:main
     ports:
       - "8080:8080"
   gateway-dapr:
@@ -269,7 +268,6 @@ services:
     extends:
       file: review/docker-compose-base.yaml
       service: review
-    image: ghcr.io/misarch/review:main
   review-db:
     extends:
       file: review/docker-compose-base.yaml
@@ -429,7 +427,6 @@ services:
     extends:
       file: order/docker-compose-base.yaml
       service: order
-    image: ghcr.io/misarch/order:main
   order-db:
     extends:
       file: order/docker-compose-base.yaml
@@ -621,6 +618,22 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     depends_on:
       - dapr-redis
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin
+      - DOCKER_INFLUXDB_INIT_ORG=my-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-secret-token
+
 volumes:
   catalog-db-data:
   wishlist-db-data:
@@ -641,3 +654,4 @@ volumes:
   media-minio-data:
   invoice-db-data:
   cadvisor-data:
+  influxdb_data:
