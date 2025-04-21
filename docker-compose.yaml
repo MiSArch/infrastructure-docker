@@ -3,6 +3,7 @@ services:
     extends:
       file: gateway/docker-compose-base.yaml
       service: gateway
+    image: ghcr.io/misarch/gateway:main
     ports:
       - "8080:8080"
   gateway-dapr:
@@ -268,6 +269,7 @@ services:
     extends:
       file: review/docker-compose-base.yaml
       service: review
+    image: ghcr.io/misarch/review:main
   review-db:
     extends:
       file: review/docker-compose-base.yaml
@@ -427,6 +429,7 @@ services:
     extends:
       file: order/docker-compose-base.yaml
       service: order
+    image: ghcr.io/misarch/order:main
   order-db:
     extends:
       file: order/docker-compose-base.yaml
@@ -583,6 +586,9 @@ services:
     depends_on:
       - prometheus
       - zipkin-all-in-one
+    ports:
+      - "4317:4317"
+      - "4318:4318"
 
   prometheus:
     image: prom/prometheus:latest
@@ -631,7 +637,7 @@ services:
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
       - DOCKER_INFLUXDB_INIT_ORG=misarch
       - DOCKER_INFLUXDB_INIT_BUCKET=gatling
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-secret-token
