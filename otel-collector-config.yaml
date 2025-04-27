@@ -31,6 +31,11 @@ receivers:
               "user:9090",
               "wishlist:9090"
             ]
+        - job_name: 'keycloak-metrics'
+          scrape_interval: 5s
+          metrics_path: /keycloak/metrics
+          static_configs:
+            - targets: [ "keycloak" ]
 
 exporters:
   prometheus:
@@ -58,3 +63,6 @@ service:
     metrics:
       receivers: [otlp, prometheus]
       exporters: [prometheus]
+  telemetry:
+    logs:
+      level: "error"
