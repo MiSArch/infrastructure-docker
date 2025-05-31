@@ -126,6 +126,8 @@ services:
       service: experiment-executor
     ports:
       - "8888:8888"
+    volumes:
+      - experiment-executor-data:/home/java/tests
     environment:
       EXPERIMENT_TRIGGER_DELAY: "40000" # 40 seconds
       REDIS_PASSWORD: "redis"
@@ -221,3 +223,4 @@ volumes:
   cadvisor-data:
   influxdb-data:
   grafana-data:
+  experiment-executor-data:
