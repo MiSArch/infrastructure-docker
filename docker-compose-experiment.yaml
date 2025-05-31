@@ -140,7 +140,7 @@ services:
       GATLING_TOKEN_HOST: "http://keycloak:80"
       GATLING_TOKEN_PATH: "/keycloak/realms/Misarch/protocol/openid-connect/token"
       GATLING_TOKEN_CLIENT_ID: "frontend"
-      GATLING_TOKEN_USERNAME: "eliasmueller"
+      GATLING_TOKEN_USERNAME: "gatling"
       GATLING_TOKEN_PASSWORD: "123"
       INFLUXDB_URL: "http://influxdb:8086/api/v2/write?org=misarch&bucket=gatling&precision=ms"
 
