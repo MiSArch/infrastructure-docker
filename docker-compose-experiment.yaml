@@ -156,6 +156,8 @@ services:
       GATLING_TOKEN_USERNAME: "gatling"
       GATLING_TOKEN_PASSWORD: "123"
       INFLUXDB_URL: "http://influxdb:8086/api/v2/write?org=misarch&bucket=gatling&precision=ms"
+      INFLUXDB_TOKEN: "my-secret-token"
+      STORE_RESULT_DATA_IN_FILES: "false"
 
   chaostoolkit-executor:
     extends: # TODO image
