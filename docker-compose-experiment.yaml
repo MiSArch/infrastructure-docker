@@ -5,12 +5,6 @@ services:
       service: gateway
     image: infrastructure-docker-gateway:latest # TODO adapt
 
-  catalog:
-    extends:
-      file: docker-compose.yaml
-      service: catalog
-    image: infrastructure-docker-catalog:latest # TODO adapt
-
   wishlist:
     extends:
       file: docker-compose.yaml
@@ -23,35 +17,11 @@ services:
       service: shoppingcart
     image: infrastructure-docker-shoppingcart:latest # TODO adapt
 
-  notification:
-    extends:
-      file: docker-compose.yaml
-      service: notification
-    image: infrastructure-docker-notification:latest # TODO adapt
-
-  user:
-    extends:
-      file: docker-compose.yaml
-      service: user
-    image: infrastructure-docker-user:latest # TODO adapt
-
   keycloak:
     extends:
       file: docker-compose.yaml
       service: keycloak
     image: infrastructure-docker-keycloak:latest # TODO adapt
-
-  inventory:
-    extends:
-      file: docker-compose.yaml
-      service: inventory
-    image: infrastructure-docker-inventory:latest # TODO adapt
-
-  tax:
-    extends:
-      file: docker-compose.yaml
-      service: tax
-    image: infrastructure-docker-tax:latest # TODO adapt
 
   review:
     extends:
@@ -59,47 +29,11 @@ services:
       service: review
     image: infrastructure-docker-review:latest # TODO adapt
 
-  address:
-    extends:
-      file: docker-compose.yaml
-      service: address
-    image: infrastructure-docker-address:latest # TODO adapt
-
-  discount:
-    extends:
-      file: docker-compose.yaml
-      service: discount
-    image: infrastructure-docker-discount:latest # TODO adapt
-
-  shipment:
-    extends:
-      file: docker-compose.yaml
-      service: shipment
-    image: infrastructure-docker-shipment:latest # TODO adapt
-
-  return:
-    extends:
-      file: docker-compose.yaml
-      service: return
-    image: infrastructure-docker-return:latest # TODO adapt
-
-  payment:
-    extends:
-      file: docker-compose.yaml
-      service: payment
-    image: infrastructure-docker-payment:latest # TODO adapt
-
   order:
     extends:
       file: docker-compose.yaml
       service: order
     image: infrastructure-docker-order:latest # TODO adapt
-
-  simulation:
-    extends:
-      file: docker-compose.yaml
-      service: simulation
-    image: infrastructure-docker-simulation:latest # TODO adapt
 
   media:
     extends:
@@ -130,8 +64,6 @@ services:
       - user-dapr
 
   experiment-executor:
-    depends_on:
-      - testdata
     extends: # TODO image
       file: experiment-executor/docker-compose-base.yaml
       service: experiment-executor
