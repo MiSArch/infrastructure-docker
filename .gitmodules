@@ -80,5 +80,5 @@
 	path = chaostoolkit-executor
 	url = ../chaostoolkit-executor
 [submodule "testdata"]
-  path = testdata
-  url = ../testdata
+	path = testdata
+	url = ../testdata
