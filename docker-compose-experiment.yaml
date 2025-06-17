@@ -130,16 +130,14 @@ services:
       - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
+    image: ghcr.io/misarch/cadvisor:v0.53.1-fix
     restart: always
     volumes:
       - /:/rootfs:ro
       - /var/run/docker.sock:/var/run/docker.sock:rw
-      - /var/run/crio/crio.sock:/var/run/crio/crio.sock:rw
+      - /var/run/containerd/containerd.sock:/var/run/containerd/containerd.sock:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    depends_on:
-      - dapr-redis
 
   influxdb:
     image: influxdb:2.7
