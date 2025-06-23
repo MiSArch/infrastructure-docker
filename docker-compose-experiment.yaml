@@ -8,9 +8,10 @@ services:
       - "5173:80"
 
   testdata:
-    extends: # TODO image
+    extends:
       file: testdata/docker-compose-base.yaml
       service: testdata
+    image: ghcr.io/misarch/testdata:main
     depends_on:
       - keycloak
       - user
