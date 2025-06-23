@@ -1,56 +1,9 @@
 services:
-  gateway:
-    extends:
-      file: docker-compose.yaml
-      service: gateway
-    image: infrastructure-docker-gateway:latest # TODO adapt
-
-  wishlist:
-    extends:
-      file: docker-compose.yaml
-      service: wishlist
-    image: infrastructure-docker-wishlist:latest # TODO adapt
-
-  shoppingcart:
-    extends:
-      file: docker-compose.yaml
-      service: shoppingcart
-    image: infrastructure-docker-shoppingcart:latest # TODO adapt
-
-  keycloak:
-    extends:
-      file: docker-compose.yaml
-      service: keycloak
-    image: infrastructure-docker-keycloak:latest # TODO adapt
-
-  review:
-    extends:
-      file: docker-compose.yaml
-      service: review
-    image: infrastructure-docker-review:latest # TODO adapt
-
-  order:
-    extends:
-      file: docker-compose.yaml
-      service: order
-    image: infrastructure-docker-order:latest # TODO adapt
-
-  media:
-    extends:
-      file: docker-compose.yaml
-      service: media
-    image: infrastructure-docker-media:latest # TODO adapt
-
-  invoice:
-    extends:
-      file: docker-compose.yaml
-      service: invoice
-    image: infrastructure-docker-invoice:latest # TODO adapt
-
   experiment-executor-frontend:
-    extends: # TODO image
+    extends:
       file: experiment-executor-frontend/docker-compose-base.yaml
       service: experiment-executor-frontend
+    image: ghcr.io/misarch/experiment-executor-frontend:main
     ports:
       - "5173:80"
 
@@ -64,9 +17,10 @@ services:
       - user-dapr
 
   experiment-executor:
-    extends: # TODO image
+    extends:
       file: experiment-executor/docker-compose-base.yaml
       service: experiment-executor
+    image: ghcr.io/misarch/experiment-executor:main
     ports:
       - "8888:8888"
     volumes:
@@ -85,24 +39,26 @@ services:
       USE_MISARCH_EXPERIMENT_CONFIG: "true"
 
   chaostoolkit-executor:
-    extends: # TODO image
+    extends:
       file: chaostoolkit-executor/docker-compose-base.yaml
       service: chaostoolkit-executor
+    image: ghcr.io/misarch/chaostoolkit-executor:main
     environment:
-      EXPERIMENT_EXECUTOR_URL: "http://experiment-executor:8888"
+      EXPERIMENT_EXECUTOR_URL: "http://192.168.65.254:8888"
     ports:
       - "8890:8890"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   gatling-executor:
-    extends: # TODO image
+    extends:
       file: gatling-executor/docker-compose-base.yaml
       service: gatling-executor
+    image: ghcr.io/misarch/gatling-executor:main
     ports:
       - "8889:8889"
     environment:
-      EXPERIMENT_EXECUTOR_URL: "http://experiment-executor:8888"
+      EXPERIMENT_EXECUTOR_URL: "http://192.168.65.254:8888"
 
   otel-collector:
     extends:
