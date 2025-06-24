@@ -12,6 +12,18 @@ services:
       file: testdata/docker-compose-base.yaml
       service: testdata
     image: ghcr.io/misarch/testdata:main
+    environment:
+      GRAPHQL_ENDPOINT: http://gateway:8080/graphql
+      KEYCLOAK_URL: http://keycloak:80/keycloak"
+      REALM: Misarch
+      ADMIN_USER: admin
+      ADMIN_PASS: admin
+      ADMIN_CLIENT_ID: admin-cli
+      CLIENT_ID: frontend
+      GATLING_USERNAME: gatling
+      GATLING_PASSWORD: 123
+      GRANT_TYPE: password
+
     depends_on:
       - keycloak
       - user
