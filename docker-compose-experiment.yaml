@@ -58,7 +58,7 @@ services:
       service: chaostoolkit-executor
     image: ghcr.io/misarch/chaostoolkit-executor:main
     environment:
-      EXPERIMENT_EXECUTOR_URL: "http://192.168.65.254:8888"
+      EXPERIMENT_EXECUTOR_URL: "http://experiment-executor:8888"
     ports:
       - "8890:8890"
     volumes:
@@ -72,7 +72,7 @@ services:
     ports:
       - "8889:8889"
     environment:
-      EXPERIMENT_EXECUTOR_URL: "http://192.168.65.254:8888"
+      EXPERIMENT_EXECUTOR_URL: "http://experiment-executor:8888"
 
   otel-collector:
     extends:
