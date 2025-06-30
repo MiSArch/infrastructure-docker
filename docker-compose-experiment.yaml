@@ -51,6 +51,7 @@ services:
       INFLUXDB_TOKEN: "my-secret-token"
       STORE_RESULT_DATA_IN_FILES: "false"
       USE_MISARCH_EXPERIMENT_CONFIG: "true"
+      IS_KUBERNETES: "false"
 
   chaostoolkit-executor:
     extends:
