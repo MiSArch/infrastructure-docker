@@ -67,3 +67,18 @@
 [submodule "experiment-config-frontend"]
 	path = experiment-config-frontend
 	url = ../experiment-config-frontend
+[submodule "experiment-executor-frontend"]
+	path = experiment-executor-frontend
+	url = ../experiment-executor-frontend
+[submodule "experiment-executor"]
+	path = experiment-executor
+	url = ../experiment-executor
+[submodule "gatling-executor"]
+	path = gatling-executor
+	url = ../gatling-executor
+[submodule "chaostoolkit-executor"]
+	path = chaostoolkit-executor
+	url = ../chaostoolkit-executor
+[submodule "testdata"]
+	path = testdata
+	url = ../testdata
