@@ -583,7 +583,7 @@ services:
     extends:
       file: experiment-executor-frontend/docker-compose-base.yaml
       service: experiment-executor-frontend
-    #image: ghcr.io/misarch/experiment-executor-frontend:main
+    image: ghcr.io/misarch/experiment-executor-frontend:main
     ports:
       - "5173:80"
 
