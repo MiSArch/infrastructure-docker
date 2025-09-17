@@ -10,9 +10,34 @@ services:
     extends:
       file: experiment-config/docker-compose-base.yaml
       service: experiment-config-dapr
+    image: "daprio/daprd:edge"
+    network_mode: "service:experiment-config"
+    command:
+      [
+        "./daprd",
+        "--app-id",
+        "experiment-config",
+        "--app-port",
+        "8080",
+        "--dapr-http-port",
+        "3500",
+        "-placement-host-address",
+        "placement:50006",
+        "--config",
+        "/config.yaml",
+        "--resources-path",
+        "/components",
+      ]
     volumes:
       - "./.dapr/dapr-config.yaml:/config.yaml"
       - "./.dapr/components:/components"
+  dapr-redis:
+    image: redis
+    command: redis-server --requirepass redis
+    volumes:
+      - redis-data:/var/lib/redis/data
+    ports:
+      - "6379:6379"
 
   experiment-executor-frontend:
     extends:
@@ -21,6 +46,8 @@ services:
     image: ghcr.io/misarch/experiment-executor-frontend:main
     ports:
       - "5173:80"
+    environment:
+      BACKEND_URL: "http://localhost:8888"
 
   experiment-executor:
     extends:
@@ -135,4 +162,5 @@ volumes:
   cadvisor-data:
   influxdb-data:
   grafana-data:
+  redis-data:
   experiment-executor-data:
